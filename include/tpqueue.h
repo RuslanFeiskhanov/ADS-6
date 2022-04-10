@@ -10,15 +10,15 @@ class TPQueue {
  public:
   void push(T value) {
       int i = last;
-      while (--i >= first && value.prior > a[i % size].prior) {
+      while ((i >= first) && (value.prior > a[i % size].prior)) {
           a[(i + 1) % size] = a[i % size];
+          i--;
       }
       a[(i+1) % size] = value;
       last++;
   }
   T pop() {
-      return a[first % size];
-      first++;
+      return a[(first++) % size];
   }
 };
 
